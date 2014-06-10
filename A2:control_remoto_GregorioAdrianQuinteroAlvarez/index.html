@@ -1,0 +1,61 @@
+<html>
+<head>
+	<title>Control Remoto</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.21" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+	<li><b>M&oacute;dulo:</b> <i>Fundamento de Hardware</i></li> 
+	<li><b>T&iacute;tulo del trabajo</b> <i>Control Remoto</i></li> 
+	<li><b>Componentes del grupo:</b> <i>Gregorio Adrián QUintero 
+	Álvarez</i></li> <li><b>Fecha de entrega:</b> <i>4 de Junio de 
+	2014</i></li> <li><b>Curso Acad&eacute;mico:</b> <i>2013/2014
+	</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Preparación</a> | <a href='#bloque2'>iTalc Master</a> | <a href='#bloque3'>iTalc Slaves</a> 
+|<a href='#bloque4'>Cliente GNU/Linux</a> | <a href='#bloque5'>Comprobación desde el Master</a> 
+</div>
+<h1><a id='bloque1'>Preparación</a></h1>
+<p   style='text-align:justify;'>Para realizar esta práctica necesitaremos dos MV de Debian y una de Windows server 2008 para
+instalar el iTalc, además las máquinas deberan tener las Ip's estáticas. En estas máquinas vamos a instalar lo siguiente:</br>
+<ul>
+<li>MV1 italc Master (Debian)</li>
+<li>MV2 italc Slave (Windows7)</li>
+<li>MV3 italc Slave (Debian)</li>
+</ul></p>
+<h1><a id='bloque2'>iTalc Master</a></h1>
+<p   style='text-align:justify;'>Vamos a instalar el iTacl Master en una de las máquinas de debian para ello es necesario crear los siguientes ficheros:</br>
+<ul>
+<li>/etc/italc/keys/private/teacher/key. Este es el fichero de clave privada del master.</li>
+<li>/etc/italc/keys/public/teacher/key. Este es el fichero de clave pública del master.</li>
+</ul>
+Si las claves anteriores no se han generado usaremos el comando "ica -createkeypair" para crearlas. Después crearemos el grupo iTalc y añadiremos el usuario 
+maul al grupo después de haberlo creado, tambíen deberemos darles permisos al grupo iTalc para que tenga acceso a las claves "cd /etc/italc; chgrp -R italc keys"
+y posteriormente verificaremos que el servicio esta iniciado con ps -ef |grep ica y si el programa no esta iniciado habrimos un terminal y escribimos  /usr/bin/ica &.
+Ahora estableceremos que el servicio ica se inicie de forma automática al iniciar sesión con maul para ello tenemos que modificar el fichero /home/maul/.profile y añadir en su final  /usr/bin/ica &.  </p>
+<img src='./fotos/0.png' height='350' width='350'/>  <img src='./fotos/1.png' height='350' width='350'/>  <img src='./fotos/2.png' height='350' width='350'/></br>
+<img src='./fotos/3.png' height='350' width='350'/>  <img src='./fotos/4.png' height='350' width='350'/>
+<h1><a id='bloque3'>iTalc Slaves</a></h1>
+<p   style='text-align:justify;'>Para esta máquina tenemos que instalar el italc slave cuya versión tiene que ser la misma que la de debian las cual es italc 1.0.13. Después deberemos copiar las claves del Italc master,
+tanto la privada como la pública en windows y por último reiniciamos el programa.</p>
+ <img src='./fotos/5.png' height='350' width='350'/><img src='./fotos/6.png' height='350' width='350'/></br>
+<h1><a id='bloque4'>Cliente GNU/Linux</a></h1>
+<p   style='text-align:justify;'>En esta máquina virtual de GNU/Linux Debian vamos a instalar el iTalc Client y después copiaremos el fichero Key del master en el client.
+Después crearemos el grupo iTalc y añadimos nuestro usuario al grupo, también deberemos de darle  permisos al grupo italc, para tener acceso a las claves de italc y verificaremos que el servicio está iniciado y
+lo estableceremos para que se inicie de forma automática como hicimos anteriormente.</p>
+ <img src='./fotos/cli.png' height='350' width='350'/>
+<h1><a id='bloque5'>Comprobación desde el Master</a></h1>
+<p   style='text-align:justify;'>Ahora desde el Master deberiamos poder monitorizar los usuarios slaves. Para ello debemos Iniciar el  programa gráfico de control, para comprobar que está todo correctamente instalado
+ y se pueden monitorizar remotamente. Primero buscar el icono en los menús del entorno gráfico y si no aparece el icono de iTalc usamos el comando italc.</p>
+ <img src='./fotos/7.png' height='350' width='350'/>  <img src='./fotos/8.png' height='350' width='350'/>  <img src='./fotos/9.png' height='350' width='350'/></br>
+</body>
+</html>
